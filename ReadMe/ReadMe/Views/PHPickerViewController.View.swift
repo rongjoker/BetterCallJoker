@@ -46,7 +46,12 @@ extension PHPickerViewController.View: UIViewControllerRepresentable {
   }
 
   func makeUIViewController(context: Context) -> PHPickerViewController {
-    let picker = PHPickerViewController( configuration: .init() )
+      var config = PHPickerConfiguration()
+      config.selectionLimit = 1
+      config.filter = PHPickerFilter.images
+      
+      let picker = PHPickerViewController( configuration: config )
+//    let picker = PHPickerViewController( configuration: .init() )
     picker.delegate = context.coordinator
     return picker
   }
